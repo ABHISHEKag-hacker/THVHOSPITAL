@@ -1,0 +1,230 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>THV Hospital</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f7f9fc;
+            color: #333;
+        }
+        header {
+            background-color: #005a9e;
+            color: white;
+            padding: 20px;
+            text-align: center;
+            font-size: 26px;
+            font-weight: bold;
+            position: relative;
+        }
+        header img {
+            position: absolute;
+            top: 10px;
+            left: 10px;
+            width: 50px;
+        }
+        nav {
+            display: flex;
+            justify-content: center;
+            background-color: #0078d7;
+        }
+        nav a {
+            padding: 15px 20px;
+            color: white;
+            text-decoration: none;
+            font-size: 18px;
+            font-weight: bold;
+        }
+        nav a:hover {
+            background-color: #005a9e;
+        }
+        .tab-content {
+            padding: 20px;
+        }
+        .tab-section {
+            background-color: #ffffff;
+            padding: 25px;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            max-width: 800px;
+            margin: 20px auto;
+        }
+        .tab-section button {
+            background-color: #0078d7;
+            color: white;
+            padding: 12px 25px;
+            border: none;
+            border-radius: 5px;
+            font-size: 16px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+        .tab-section button:hover {
+            background-color: #005a9e;
+        }
+        .tab-section textarea {
+            width: 100%;
+            padding: 10px;
+            margin-top: 15px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            resize: none;
+            height: 100px;
+        }
+        .report-tab label {
+            display: block;
+            margin: 10px 0 5px;
+            font-weight: bold;
+        }
+        .report-tab input, .report-tab select, .report-tab textarea {
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 15px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+        footer {
+            background-color: #005a9e;
+            color: white;
+            text-align: center;
+            padding: 10px;
+            margin-top: 20px;
+        }
+        footer p {
+            margin: 0;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <img src="143643.jpg" alt="Doctor Symbol">
+        THV Hospital
+    </header>
+    <nav>
+        <a href="#video-conference">Video Conference</a>
+        <a href="#dr-chatbot">Dr. Chatbot</a>
+        <a href="#report">Report</a>
+    </nav>
+
+    <div class="tab-content" id="video-conference">
+        <div class="tab-section">
+            <h2>Welcome to THV Hospital</h2>
+            <button id="appointmentBtn" onclick="handleAppointmentClick()">Take Online Appointment</button>
+        </div>
+    </div>
+
+    <div class="tab-content" id="dr-chatbot">
+        <div class="tab-section">
+            <h2>Consult with Dr. Chatbot</h2>
+            <textarea placeholder="Describe your problem here..."></textarea>
+            <button id="chatbotBtn" onclick="handleChatbotSubmit()">Submit</button>
+        </div>
+    </div>
+
+    <div class="tab-content" id="report">
+        <div class="tab-section report-tab">
+            <h2>Patient Entry Details</h2>
+            <form id="patientForm">
+                <label for="full-name">Full Name:</label>
+                <input type="text" id="full-name" name="Full Name" required>
+
+                <label for="dob">Date of Birth (dd-mm-yyyy):</label>
+                <input type="text" id="dob" name="Date of Birth" required>
+
+                <label for="gender">Gender:</label>
+                <select id="gender" name="Gender" required>
+                    <option value="">Select Gender</option>
+                    <option value="Male">Male</option>
+                    <option value="Female">Female</option>
+                </select>
+
+                <label for="contact-info">Contact Info (Phone, Email):</label>
+                <input type="text" id="contact-info" name="Contact Info" required>
+
+                <label for="address">Address:</label>
+                <input type="text" id="address" name="Address" required>
+
+                <label for="blood-group">Blood Group:</label>
+                <select id="blood-group" name="Blood Group">
+                    <option value="">Select Blood Group</option>
+                    <option value="A+">A+</option>
+                    <option value="A-">A-</option>
+                    <option value="B+">B+</option>
+                    <option value="B-">B-</option>
+                    <option value="O+">O+</option>
+                    <option value="O-">O-</option>
+                    <option value="AB+">AB+</option>
+                    <option value="AB-">AB-</option>
+                </select>
+
+                <label for="reason-for-visit">Reason for Visit:</label>
+                <textarea id="reason-for-visit" name="Reason for Visit"></textarea>
+
+                <label for="emergency-contact">Emergency Contact:</label>
+                <input type="text" id="emergency-contact" name="Emergency Contact">
+
+                <button type="button" onclick="generatePDF()">Submit</button>
+            </form>
+        </div>
+    </div>
+
+    <footer>
+        <p>&copy; 2025 THV Hospital. All rights reserved.</p>
+    </footer>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.4.0/jspdf.umd.min.js"></script>
+    <script>
+        function handleAppointmentClick() {
+            const button = document.getElementById('appointmentBtn');
+            button.textContent = 'Waiting for Call...';
+            button.disabled = true;
+            button.style.backgroundColor = '#cccccc';
+        }
+
+        function handleChatbotSubmit() {
+            const button = document.getElementById('chatbotBtn');
+            button.textContent = 'Processing...';
+            button.disabled = true;
+            setTimeout(() => {
+                button.textContent = 'Submit';
+                button.disabled = false;
+            }, 2000); // Simulate processing time
+        }
+
+        async function generatePDF() {
+            const { jsPDF } = window.jspdf;
+            const doc = new jsPDF();
+
+            const form = document.getElementById('patientForm');
+            const formData = new FormData(form);
+
+            doc.setFillColor(0, 122, 255); // Blue color for the title bar
+            doc.rect(0, 0, 210, 20, 'F');
+            doc.setFont("helvetica", "bold");
+            doc.setFontSize(14);
+            doc.setTextColor(255, 255, 255); // White text
+            doc.text('Patient Entry Details', 10, 14);
+
+            let yOffset = 30;
+            doc.setFont("helvetica", "normal");
+            doc.setFontSize(12);
+            doc.setTextColor(0, 0, 0); // Black text
+
+            formData.forEach((value, key) => {
+                doc.text(`${key}: ${value}`, 10, yOffset);
+                yOffset += 10;
+                if (yOffset > 280) {
+                    doc.addPage();
+                    yOffset = 20;
+                }
+            });
+
+            doc.save('Patient_Report.pdf');
+        }
+    </script>
+</body>
+</html>

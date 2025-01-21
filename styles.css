@@ -1,0 +1,94 @@
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #f7f9fc;
+    color: #333;
+}
+header {
+    background-color: #005a9e;
+    color: white;
+    padding: 20px;
+    text-align: center;
+    font-size: 26px;
+    font-weight: bold;
+    position: relative;
+}
+header img {
+    position: absolute;
+    top: 10px;
+    left: 10px;
+    width: 50px;
+}
+nav {
+    display: flex;
+    justify-content: center;
+    background-color: #0078d7;
+}
+nav a {
+    padding: 15px 20px;
+    color: white;
+    text-decoration: none;
+    font-size: 18px;
+    font-weight: bold;
+}
+nav a:hover {
+    background-color: #005a9e;
+}
+.tab-content {
+    padding: 20px;
+}
+.tab-section {
+    background-color: #ffffff;
+    padding: 25px;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    max-width: 800px;
+    margin: 20px auto;
+}
+.tab-section button {
+    background-color: #0078d7;
+    color: white;
+    padding: 12px 25px;
+    border: none;
+    border-radius: 5px;
+    font-size: 16px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+.tab-section button:hover {
+    background-color: #005a9e;
+}
+.tab-section textarea {
+    width: 100%;
+    padding: 10px;
+    margin-top: 15px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    resize: none;
+    height: 100px;
+}
+.report-tab label {
+    display: block;
+    margin: 10px 0 5px;
+    font-weight: bold;
+}
+.report-tab input,
+.report-tab select,
+.report-tab textarea {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 15px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+}
+footer {
+    background-color: #005a9e;
+    color: white;
+    text-align: center;
+    padding: 10px;
+    margin-top: 20px;
+}
+footer p {
+    margin: 0;
+}
